@@ -12,6 +12,7 @@
     "mongoose": "^8.5.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "serverless-http": "^3.0.6"
   }
 }
