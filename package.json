@@ -1,0 +1,17 @@
+{
+  "name": "Expense Tracker",
+  "version": "1.0.0",
+  "description": "Expense and budget tracker with AI-powered spending analysis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0"
+  }
+}

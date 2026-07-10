@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker & amp; Your personal Budget Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">॰</span>
+      <span class="brand-name">Expense Tracker</span>
+    </div>
+    <nav class="nav">
+      <button class="nav-tab active" data-view="dashboard"><span class="tab-index">01</span> Dashboard</button>
+      <button class="nav-tab" data-view="expenses"><span class="tab-index">02</span> Expenses</button>
+      <button class="nav-tab" data-view="budgets"><span class="tab-index">03</span> Budgets</button>
+      <button class="nav-tab" data-view="savings"><span class="tab-index">04</span> Savings</button>
+    </nav>
+    <div class="month-control">
+      <label for="monthPicker">Statement period</label>
+      <input type="month" id="monthPicker">
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- DASHBOARD -->
+    <section class="view active" id="view-dashboard">
+      <header class="view-header">
+        <h1>Monthly Statement</h1>
+        <p class="view-sub">A running account of where the money went.</p>
+      </header>
+
+      <div class="summary-row">
+        <div class="stamp-card">
+          <span class="stamp-label">Total Spent</span>
+          <span class="stamp-value mono" id="statTotalSpent">₹0</span>
+        </div>
+        <div class="stamp-card">
+          <span class="stamp-label">Total Budget</span>
+          <span class="stamp-value mono" id="statTotalBudget">₹0</span>
+        </div>
+        <div class="stamp-card">
+          <span class="stamp-label">Remaining</span>
+          <span class="stamp-value mono" id="statRemaining">₹0</span>
+        </div>
+        <div class="stamp-card">
+          <span class="stamp-label">Saved</span>
+          <span class="stamp-value mono" id="statSaved">₹0</span>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="ledger-panel">
+          <h2>Category Breakdown</h2>
+          <div class="chart-shell">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+        <div class="ledger-panel">
+          <h2>Budget vs Spent</h2>
+          <div class="chart-shell">
+            <canvas id="budgetChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="ledger-panel advice-panel">
+        <div class="advice-header">
+          <h2>Tailored Analysis</h2>
+          <button class="btn btn-gold" id="runAnalysis">Analyze this month</button>
+        </div>
+        <p class="advice-text" id="adviceText">Add some expenses and budgets, then run the analysis to get a plain-language read on your spending.</p>
+      </div>
+    </section>
+
+    <!-- EXPENSES -->
+    <section class="view" id="view-expenses">
+      <header class="view-header">
+        <h1>Expenses</h1>
+        <p class="view-sub">Every entry, dated and categorized.</p>
+      </header>
+
+      <form class="entry-form" id="expenseForm">
+        <input type="number" id="expAmount" placeholder="Amount (₹)" step="0.01" min="0" required>
+        <input type="text" id="expCategory" placeholder="Category (e.g. Food)" required list="categoryList">
+        <datalist id="categoryList"></datalist>
+        <input type="date" id="expDate" required>
+        <input type="text" id="expNote" placeholder="Note (optional)">
+        <button type="submit" class="btn btn-gold">Add Expense</button>
+      </form>
+
+      <div class="table-wrap">
+        <table class="ledger-table" id="expenseTable">
+          <thead>
+            <tr><th>Date</th><th>Category</th><th>Note</th><th class="right">Amount</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- BUDGETS -->
+    <section class="view" id="view-budgets">
+      <header class="view-header">
+        <h1>Budgets</h1>
+        <p class="view-sub">Set a ceiling per category for this month.</p>
+      </header>
+
+      <form class="entry-form" id="budgetForm">
+        <input type="text" id="budCategory" placeholder="Category" required>
+        <input type="number" id="budAmount" placeholder="Monthly limit (₹)" step="0.01" min="0" required>
+        <button type="submit" class="btn btn-gold">Save Budget</button>
+      </form>
+
+      <div class="table-wrap">
+        <table class="ledger-table" id="budgetTable">
+          <thead>
+            <tr><th>Category</th><th class="right">Limit</th><th class="right">Spent</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SAVINGS -->
+    <section class="view" id="view-savings">
+      <header class="view-header">
+        <h1>Savings Goals</h1>
+        <p class="view-sub">What you're putting aside, and how close you are.</p>
+      </header>
+
+      <form class="entry-form" id="savingForm">
+        <input type="text" id="savTitle" placeholder="Goal title" required>
+        <input type="number" id="savTarget" placeholder="Target (₹)" step="0.01" min="0" required>
+        <input type="date" id="savDeadline">
+        <button type="submit" class="btn btn-gold">Create Goal</button>
+      </form>
+
+      <div class="goals-grid" id="goalsGrid"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
