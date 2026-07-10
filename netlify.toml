@@ -3,6 +3,12 @@
   functions = "api"
 
 [[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/index/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
