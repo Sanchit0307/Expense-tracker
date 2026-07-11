@@ -6,7 +6,7 @@ built for students and early-career professionals managing money in INR.
 ## Stack
 - **Backend:** Node.js, Express, MongoDB (Mongoose)
 - **Frontend:** Plain HTML/CSS/JS, Chart.js
-- **AI:** NVIDIA API (free tier) for the monthly analysis feature
+- **AI:** GROQ API KEY (free tier) for the monthly analysis feature
 
 ## Setup
 
@@ -17,8 +17,7 @@ built for students and early-career professionals managing money in INR.
 
 2. Copy `.env.example` to `.env` and fill in:
    - `MONGODB_URI` — a local MongoDB instance or a MongoDB Atlas connection string
-   - `NVIDIA_API_KEY` — get a free key at https://build.nvidia.com (optional —
-     the app works without it, it just skips the AI advice)
+   - GROQ_API_KEY - It is taken from https://console.groq.com/keys
 
 3. Run it:
    ```
