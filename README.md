@@ -48,3 +48,6 @@ clearly in an interview instead of "I just prompted an AI with the data."
 ## Deployment
 - Frontend + backend: deploy together on Render (Express serves the `public/` folder)
 - Database: MongoDB Atlas free tier
+
+  ## Deployed Via Render
+  live on : https://expense-tracker-u2dd.onrender.com
